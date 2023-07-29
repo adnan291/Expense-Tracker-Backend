@@ -39,8 +39,7 @@ exports.signupUser = (async (req, res, next) => {
 exports.loginUser = (async (req, res, next) => {
   const email = req.body.email
   const password = req.body.password; 
-
-
+// console.log(req.body);
   try {
 
     const user = await User.findAll({ where: { email: email } });

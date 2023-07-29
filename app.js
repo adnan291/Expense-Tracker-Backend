@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const fs = require('fs');
@@ -20,12 +20,14 @@ const forgotpassRoutes = require('./routes/forgotpassword');
 const accessLogSystem = fs.createWriteStream(path.join(__dirname, 'access.log'),
 {flags : 'a'});
 
+
 const app = express();
 app.use(bodyParser.json({ extended: false }));
 app.use(cors());
-app.use(helmet());
+// app.use(helmet()); 
 app.use(compression());
-app.use(morgan('combined', {stream : accessLogSystem}))
+app.use(morgan('combined', {stream : accessLogSystem}));
+app.use(express.static(path.join(__dirname, "/public/")));
 
 const sequelize = require('./util/database');
 
@@ -40,6 +42,14 @@ app.use('/password',forgotpassRoutes);
 app.use('/expense', expenseRoutes);
 app.use("/purchase", buyPremium);
 app.use("/premium", premiumRoutes);
+app.use("/", (req, res) => {
+    console.log("req.url: ",req.url );
+   res.sendFile(path.join(__dirname, `public/${req.url}`));
+});
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "public", `${req.url}`));
+//   });
+
 
 User.hasMany(Expense);
 Expense.belongsTo(User);
@@ -56,9 +66,7 @@ FilesDownloaded.belongsTo(User);
 const port = process.env.PORT_NUMBER;
 
 sequelize.sync().then((result) => {
-    app.listen(port || 3000, () => {
-        console.log("The app is running on port http://127.0.0.1:" + port);
-        });
+    app.listen(port || 4000);
 }).catch((err) => {
     console.log(err);
 });
