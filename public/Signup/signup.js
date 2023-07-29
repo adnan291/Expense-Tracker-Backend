@@ -31,7 +31,7 @@ async function signup(event) {
         event.target.password.value = '';
         setTimeout(() => {
           msg.innerHTML = '';
-        }, 2000).then(window.location.href="../login/login.html"); 
+        }, 2000).then(window.location.href="../Login/login.html"); 
         
       }
   
