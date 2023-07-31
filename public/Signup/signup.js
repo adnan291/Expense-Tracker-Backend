@@ -13,7 +13,7 @@ async function signup(event) {
         password
       }
   
-      const res = await axios.post("http://3.7.248.136:4000/user/signup", obj);
+      const res = await axios.post("http://13.126.238.163:4000/user/signup", obj);
 // console.log("res", res);
       if(res.data.alreadyexisting == true){
         msg.innerHTML = '<h4>User Already Exist<h4>';

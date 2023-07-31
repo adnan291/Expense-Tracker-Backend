@@ -10,7 +10,7 @@ async function forgotPassword(event) {
     //console.log(userDetails);
  
     try {
-      const res = await axios.post("http://3.7.248.136:4000/password/forgotpassword", userDetails);
+      const res = await axios.post("http://13.126.238.163:4000/password/forgotpassword", userDetails);
       // console.log(res);
       window.alert("reset password link sent to your email")
     } catch (err) {

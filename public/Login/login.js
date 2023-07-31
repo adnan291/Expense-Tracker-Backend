@@ -12,7 +12,7 @@ async function login(event) {
       password
     }
 
-    const res = await axios.post("http://3.7.248.136:4000/user/login", obj);
+    const res = await axios.post("http://13.126.238.163:4000/user/login", obj);
     // console.log(obj);
     if (res.status == 200) {
       window.alert("User Logged In Successfully");
