@@ -6,7 +6,8 @@ async function forgotPassword(event) {
     const userDetails = {
       email,
     };
-
+ 
+    //console.log(userDetails);
  
     try {
       const res = await axios.post("http://13.126.238.163:4000/password/forgotpassword", userDetails);

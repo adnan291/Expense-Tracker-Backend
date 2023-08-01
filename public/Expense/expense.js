@@ -138,7 +138,6 @@ async function saveToDatabase(event) {
     //                                </div>
 
      parentNode.innerHTML = parentNode.innerHTML + childHTML;
-    //  console.log(parentNode);
    }
 
 
@@ -424,7 +423,7 @@ async function saveToDatabase(event) {
               },
               { headers: { Authorization: token } }
             )
-              alert("You are a Premiem User Now Please Login Again To Enjoy Premium Features");
+              alert("You are a Premiem User Now Please\n Login Again To Enjoy Premium Features");
 
               window.location.href="../login/login.html";
         },
